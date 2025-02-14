@@ -1,0 +1,18 @@
+services:
+
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    ports:
+      - 8012:8096
+    environment:
+      - PUID=1026
+      - GUID=100
+      - TZ=Australia/Sydney
+    volumes:
+      - ${DOCKER_BIND_MOUNT_PATH}/jellyfin/config:/config
+      - ${DOCKER_BIND_MOUNT_PATH}/jellyfin/cache:/cache
+      - "/mnt/synonas1/homes/jdansev/Media Library:/media"
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

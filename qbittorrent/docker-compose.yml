@@ -1,4 +1,5 @@
 services:
+
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
@@ -10,7 +11,7 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - config:/config
-      - ${CENTRAL_VOLUME_STORAGE}/qbittorrent2/downloads:/downloads
+      - ${DOCKER_BIND_MOUNT_PATH}/qbittorrent/downloads:/downloads
     ports:
       - 8080:8080
       - 6881:6881

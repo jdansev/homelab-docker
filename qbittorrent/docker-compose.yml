@@ -20,3 +20,4 @@ services:
 
 volumes:
   config:
+    name: qbittorrent_config

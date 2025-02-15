@@ -30,4 +30,6 @@ services:
 
 volumes:
   html:
+    name: nextcloud_html
   db:
+    name: nextcloud_db

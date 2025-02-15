@@ -1,0 +1,10 @@
+services:
+
+  node-app:
+    build: .
+    image: my-node-app
+    container_name: my-node-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production

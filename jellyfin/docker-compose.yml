@@ -13,6 +13,6 @@ services:
       - ${DOCKER_BIND_MOUNT_PATH}/jellyfin/config:/config
       - ${DOCKER_BIND_MOUNT_PATH}/jellyfin/cache:/cache
       - "/mnt/synonas1/homes/jdansev/Media Library:/media"
-    restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    restart: unless-stopped

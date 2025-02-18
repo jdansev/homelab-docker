@@ -1,0 +1,14 @@
+services:
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    environment:
+      - TZ=Australia/Sydney
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    command: tunnel --no-autoupdate run
+    restart: always
+
+networks:
+  cloudflared:
+    name: cloudflared

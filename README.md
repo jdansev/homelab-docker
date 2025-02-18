@@ -15,3 +15,7 @@ sudo docker system df --verbose
 sudo docker ps --size
 sudo docker stats
 ```
+
+```bash
+sudo docker inspect --format '{{ .NetworkSettings.Ports }}' <container_name> # check assigned port
+```

@@ -1,0 +1,38 @@
+services:
+
+  ubuntu-xrdp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        FULL_NAME: ${FULL_NAME}
+        USERNAME: ${USERNAME}
+        PASSWORD: ${PASSWORD}
+    image: ubuntu-xrdp
+    container_name: ubuntu-xrdp
+    hostname: uxrdp
+    shm_size: 1g
+    volumes:
+      - "synology_docker_nfs:/home/${USERNAME}/Desktop/Synology Docker"
+      - "synology_homes_nfs:/home/${USERNAME}/Desktop/Synology Homes"
+    ports:
+      - 3389:3389
+      - 2222:22
+      - 4000:4000
+    restart: unless-stopped
+
+volumes:
+  synology_docker_nfs:
+    name: synology_docker_nfs
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.50.108,rw,mountvers=3
+      device: ":/volume1/docker"
+  synology_homes_nfs:
+    name: synology_homes_nfs
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.50.108,rw,mountvers=3
+      device: ":/volume1/homes"

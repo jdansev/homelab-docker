@@ -1,0 +1,17 @@
+services:
+
+  minio:
+    image: docker.io/bitnami/minio:2022
+    container_name: minio
+    ports:
+      - 9900:9000
+      - 9901:9001
+    volumes:
+      - ${DOCKER_BIND_MOUNT_PATH}/minio:/data
+    environment:
+      - PUID=1026
+      - PGID=100
+      - TZ=Sydney/Australia
+      - MINIO_ROOT_USER=jdansev
+      - MINIO_ROOT_PASSWORD=Jd07271996!
+      - MINIO_DEFAULT_BUCKETS=bucket1

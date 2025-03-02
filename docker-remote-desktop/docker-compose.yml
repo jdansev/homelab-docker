@@ -1,0 +1,30 @@
+services:
+
+  ubuntu-rdp:
+    build: .
+    image: ubuntu-rdp
+    container_name: ubuntu-rdp
+    hostname: ubuntu-rdp
+    shm_size: 1g
+    volumes:
+      - synology_docker_nfs:/mnt/SynologyDocker
+      - synology_homes_nfs:/mnt/SynologyHomes
+    ports:
+      - 3388:3389
+    restart: unless-stopped
+
+volumes:
+  synology_docker_nfs:
+    name: synology_docker_nfs
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.50.108,rw,mountvers=3
+      device: ":/volume1/docker"
+  synology_homes_nfs:
+    name: synology_homes_nfs
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.50.108,rw,mountvers=3
+      device: ":/volume1/homes"

@@ -1,0 +1,20 @@
+services:
+
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: tailscale
+    privileged: true
+    environment:
+      - TS_AUTHKEY=tskey-auth-kXkF1PGjox11CNTRL-PsXe3kb9DMCfk6y4ckbsECyJZSqcvCLN
+      - TS_STATE_DIR=/var/lib/tailscale
+    volumes:
+      - tailscale_lib:/var/lib/tailscale
+      - tailscale_tun:/dev/net/tun
+    network_mode: host
+    restart: unless-stopped
+
+volumes:
+  tailscale_lib:
+    name: tailscale_lib
+  tailscale_tun:
+    name: tailscale_tun

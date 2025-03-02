@@ -18,3 +18,9 @@ vi /opt/seafile/conf/seahub_settings.py
 ```py
 CSRF_TRUSTED_ORIGINS = ['https://seafile.lejohndary.com']
 ```
+
+- Login will now work but file upload/download results in network error
+
+5. Go to System Admin > Settings
+- SERVICE_URL: https://seafile.lejohndary.com
+- FILE_SERVER_ROOT: https://seafile.lejohndary.com/seafhttp

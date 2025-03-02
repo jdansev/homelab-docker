@@ -7,7 +7,8 @@ services:
       - MYSQL_ROOT_PASSWORD=${SEAFILE_DB_ROOT_PASSWORD}
       - MYSQL_LOG_CONSOLE=true
     volumes:
-      - seafile_sql:/var/lib/mysql
+      # - seafile_sql:/var/lib/mysql
+      - ${DOCKER_BIND_MOUNT_PATH}/seafile/sql:/var/lib/mysql
 
   memcached:
     image: memcached:latest
@@ -33,7 +34,8 @@ services:
       - db
       - memcached
     volumes:
-      - seafile_data:/shared
+      # - seafile_data:/shared
+      - ${DOCKER_BIND_MOUNT_PATH}/seafile/data:/shared
 
 volumes:
   seafile_sql:

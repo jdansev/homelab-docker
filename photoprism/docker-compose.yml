@@ -1,0 +1,45 @@
+services:
+
+  photoprism:
+    image: photoprism/photoprism:latest
+    container_name: photoprism
+    hostname: photoprism
+    environment:
+      - PHOTOPRISM_ADMIN_PASSWORD=${PASSWORD}
+      - PHOTOPRISM_DEBUG=false
+      - PHOTOPRISM_PUBLIC=false
+      - PHOTOPRISM_UPLOAD_NSFW=true
+      - PHOTOPRISM_DETECT_NSFW=false
+      - PHOTOPRISM_HTTP_HOST=0.0.0.0
+      - PHOTOPRISM_HTTP_PORT=2342
+      - PHOTOPRISM_DATABASE_DRIVER=sqlite
+    ports:
+      - 2342:2342
+    volumes:
+      - photoprism_import_volume:/photoprism/import
+      - photoprism_originals_volume:/photoprism/originals
+      - photoprism_storage_volume:/photoprism/storage
+    restart: unless-stopped
+
+volumes:
+  photoprism_import_volume:
+    name: photoprism_import_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/photoprism/import
+      o: bind
+  photoprism_originals_volume:
+    name: photoprism_originals_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/photoprism/originals
+      o: bind
+  photoprism_storage_volume:
+    name: photoprism_storage_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/photoprism/storage
+      o: bind

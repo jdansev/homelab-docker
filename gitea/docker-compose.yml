@@ -1,0 +1,23 @@
+services:
+
+  gitea:
+    image: gitea/gitea:latest
+    container_name: gitea
+    hostname: gitea
+    environment:
+      - ROOT_URL=https://gitea.lejohndary.com
+    ports:
+      - 3030:3000 # webgui
+      - 2222:22 # ssh
+    volumes:
+      - gitea_data_volume:/data
+    restart: unless-stopped
+
+volumes:
+  gitea_data_volume:
+    name: gitea_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/gitea/data
+      o: bind

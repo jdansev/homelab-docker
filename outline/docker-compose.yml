@@ -50,7 +50,7 @@ services:
     image: nginx
     container_name: outline_nginx
     ports:
-      - 192.168.50.245:8282:80
+      - 8282:80
     volumes:
       - outline_nginx_volume:/etc/nginx/conf.d/:ro
       - outline_static_root_volume:/uc/static_root:ro

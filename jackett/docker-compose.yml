@@ -1,0 +1,29 @@
+services:
+
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    environment:
+      - TZ=Sydney/Australia
+    volumes:
+      - jackett_config_volume:/config
+      - jackett_downloads_volume:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped
+
+volumes:
+  jackett_config_volume:
+    name: jackett_config_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/jackett/config
+      o: bind
+  jackett_downloads_volume:
+    name: jackett_downloads_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/jackett/downloads
+      o: bind

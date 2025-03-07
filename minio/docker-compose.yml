@@ -7,15 +7,18 @@ services:
       - 9900:9000
       - 9901:9001
     volumes:
-      - ${DOCKER_BIND_MOUNT_PATH}/minio:/data
+      - minio_data_volume:/data
     environment:
-      - PUID=1026
-      - PGID=100
       - TZ=Sydney/Australia
-      - MINIO_ROOT_USER=jdansev
-      - MINIO_ROOT_PASSWORD=Jd07271996!
-      - MINIO_DEFAULT_BUCKETS=bucket1
+      - MINIO_ROOT_USER=${USERNAME}
+      - MINIO_ROOT_PASSWORD=${PASSWORD}
+      - MINIO_DEFAULT_BUCKETS=${DEFAULT_BUCKETS}
 
 volumes:
-  my_volume:
-    name: my_volume
+  minio_data_volume:
+    name: minio_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/minio/data
+      o: bind

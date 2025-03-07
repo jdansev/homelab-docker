@@ -5,11 +5,6 @@ openssl rand -hex 32
 ```
 
 ```bash
-sudo docker compose --env-file ../.env up -d
-sudo docker compose --env-file ../.env down
-```
-
-```bash
 # list all volumes
 sudo docker volume ls
 

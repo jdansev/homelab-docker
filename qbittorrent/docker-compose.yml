@@ -4,20 +4,30 @@ services:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
     environment:
-      - PUID=1026
-      - PGID=100
       - TZ=Australia/Sydney
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
     volumes:
-      - config:/config
-      - ${DOCKER_BIND_MOUNT_PATH}/qbittorrent/downloads:/downloads
+      - qbittorrent_config_volume:/config
+      - qbittorrent_downloads_volume:/downloads
     ports:
       - 8080:8080
       - 6881:6881
       - 6881:6881/udp
-    restart: always
+    restart: unless-stopped
 
 volumes:
-  config:
-    name: qbittorrent_config
+  qbittorrent_config_volume:
+    name: qbittorrent_config_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/qbittorrent/config
+      o: bind
+  qbittorrent_downloads_volume:
+    name: qbittorrent_downloads_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/qbittorrent/downloads
+      o: bind

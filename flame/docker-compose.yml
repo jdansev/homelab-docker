@@ -1,0 +1,22 @@
+services:
+
+  flame:
+    image: pawelmalak/flame:latest
+    container_name: flame
+    volumes:
+      - flame_data_volume:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 5005:5005
+    environment:
+      - PASSWORD=${PASSWORD}
+    restart: unless-stopped
+
+volumes:
+  flame_data_volume:
+    name: flame_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/flame
+      o: bind

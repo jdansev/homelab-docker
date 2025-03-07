@@ -10,9 +10,25 @@ services:
       - GUID=100
       - TZ=Australia/Sydney
     volumes:
-      - ${DOCKER_BIND_MOUNT_PATH}/jellyfin/config:/config
-      - ${DOCKER_BIND_MOUNT_PATH}/jellyfin/cache:/cache
+      - jellyfin_config_volume:/config
+      - jellyfin_cache_volume:/cache
       - "/mnt/synonas1/homes/jdansev/Media Library:/media"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     restart: unless-stopped
+
+volumes:
+  jellyfin_config_volume:
+    name: jellyfin_config_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/jellyfin/config
+      o: bind
+  jellyfin_cache_volume:
+    name: jellyfin_cache_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/jellyfin/cache
+      o: bind

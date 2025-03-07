@@ -6,9 +6,14 @@ services:
     ports:
       - "8334:8334"
     volumes:
-      - filestash_data:/data
+      - filestash_data_volume:/data
     restart: unless-stopped
 
 volumes:
-  filestash_data:
-    name: filestash_data
+  filestash_data_volume:
+    name: filestash_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/filestash/data
+      o: bind

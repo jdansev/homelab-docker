@@ -15,7 +15,7 @@ services:
       MYSQL_USER: guacamole_user
       MYSQL_PASSWORD: guacamole_pass # Change this
     volumes:
-      - mysql_data:/var/lib/mysql
+      - guacamole_db_volume:/var/lib/mysql
 
   guacamole:
     image: guacamole/guacamole:latest
@@ -34,4 +34,10 @@ services:
     restart: unless-stopped
 
 volumes:
-  mysql_data:
+  guacamole_db_volume:
+    name: guacamole_db_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/guacamole/db
+      o: bind

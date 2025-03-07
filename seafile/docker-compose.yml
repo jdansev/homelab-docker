@@ -7,8 +7,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${SEAFILE_DB_ROOT_PASSWORD}
       - MYSQL_LOG_CONSOLE=true
     volumes:
-      # - seafile_sql:/var/lib/mysql
-      - ${DOCKER_BIND_MOUNT_PATH}/seafile/sql:/var/lib/mysql
+      - seafile_db_volume:/var/lib/mysql
 
   memcached:
     image: memcached:latest
@@ -34,15 +33,20 @@ services:
       - db
       - memcached
     volumes:
-      # - seafile_data:/shared
-      - ${DOCKER_BIND_MOUNT_PATH}/seafile/data:/shared
+      - seafile_data_volume:/shared
 
 volumes:
-  seafile_sql:
-    name: seafile_sql
+  seafile_db_volume:
+    name: seafile_db_volume
     driver: local
-    external: false
-  seafile_data:
-    name: seafile_data
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/seafile/db
+      o: bind
+  seafile_data_volume:
+    name: seafile_data_volume
     driver: local
-    external: false
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/seafile/data
+      o: bind

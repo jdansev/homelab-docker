@@ -1,6 +1,10 @@
 # homelab-docker
 
 ```bash
+openssl rand -hex 32
+```
+
+```bash
 sudo docker compose --env-file ../.env up -d
 sudo docker compose --env-file ../.env down
 ```

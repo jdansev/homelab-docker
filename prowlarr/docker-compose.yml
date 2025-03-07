@@ -4,15 +4,18 @@ services:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
     environment:
-      - PUID=1026
-      - PGID=100
       - TZ=Sydney/Australia
     volumes:
-      - config:/config
+      - prowlarr_config_volume:/config
     ports:
       - 9696:9696
     restart: unless-stopped
 
 volumes:
-  config:
-    name: prowlarr_config
+  prowlarr_config_volume:
+    name: prowlarr_config_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/prowlarr/config
+      o: bind

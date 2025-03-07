@@ -15,3 +15,7 @@ services:
       - MINIO_ROOT_USER=jdansev
       - MINIO_ROOT_PASSWORD=Jd07271996!
       - MINIO_DEFAULT_BUCKETS=bucket1
+
+volumes:
+  my_volume:
+    name: my_volume

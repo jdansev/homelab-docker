@@ -1,0 +1,29 @@
+services:
+
+  mealie:
+    image: ghcr.io/mealie-recipes/mealie:v1.6.0
+    container_name: mealie
+    ports:
+      - "9925:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+    volumes:
+      - mealie_data_volume:/app/data
+    environment:
+      - ALLOW_SIGNUP=true
+      - TZ=Australia/Sydney
+      - MAX_WORKERS=1
+      - WEB_CONCURRENCY=1
+      - BASE_URL=https://mealie.lejohndary.com
+    restart: unless-stopped
+
+volumes:
+  mealie_data_volume:
+    name: mealie_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/mealie/data
+      o: bind

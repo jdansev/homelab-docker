@@ -2,42 +2,71 @@ services:
 
   guacd:
     image: guacamole/guacd:latest
-    container_name: guacd
-    restart: unless-stopped
-
-  mysql:
-    image: mysql:latest
-    container_name: guac_mysql
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword # Change this
-      MYSQL_DATABASE: guacamole_db
-      MYSQL_USER: guacamole_user
-      MYSQL_PASSWORD: guacamole_pass # Change this
+    container_name: guacamole_guacd
+    restart: always
     volumes:
-      - guacamole_db_volume:/var/lib/mysql
+      - guacamole_drive_volume:/drive:rw
+      - guacamole_record_volume:/record:rw
+
+  postgres:
+    image: postgres:15.2-alpine
+    container_name: guacamole-db
+    restart: always
+    environment:
+      - PGDATA=/var/lib/postgresql/data/guacamole
+      - POSTGRES_DB=guacamole_db
+      - POSTGRES_PASSWORD=e0889c2edc271de88b96f87931db9eb03b2c9ebd41168cf6c2953f7c80f6f522
+      - POSTGRES_USER=guacamole_user
+    volumes:
+      - guacamole_psql_init_volume:/docker-entrypoint-initdb.d:z
+      - guacamole_psql_data_volume:/var/lib/postgresql/data:Z
 
   guacamole:
     image: guacamole/guacamole:latest
     container_name: guacamole
+    restart: always
     depends_on:
       - guacd
-      - mysql
+      - postgres
     environment:
-      GUACD_HOSTNAME: guacd
-      MYSQL_HOSTNAME: mysql
-      MYSQL_DATABASE: guacamole_db
-      MYSQL_USER: guacamole_user
-      MYSQL_PASSWORD: guacamole_pass # Change this
+      - GUACD_HOSTNAME=guacd
+      - POSTGRES_DATABASE=guacamole_db
+      - POSTGRES_HOSTNAME=postgres
+      - POSTGRES_PASSWORD=e0889c2edc271de88b96f87931db9eb03b2c9ebd41168cf6c2953f7c80f6f522
+      - POSTGRES_USER=guacamole_user
+    links:
+      - guacd
     ports:
-      - "8082:8080"
-    restart: unless-stopped
+      - 8082:8080/tcp
+    expose:
+      - 8082
 
 volumes:
-  guacamole_db_volume:
-    name: guacamole_db_volume
+  guacamole_drive_volume:
+    name: guacamole_drive_volume
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/guacamole/db
+      device: /mnt/synonas1/docker-volumes/guacamole/guacd/drive
+      o: bind
+  guacamole_record_volume:
+    name: guacamole_record_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/guacamole/guacd/record
+      o: bind
+  guacamole_psql_init_volume:
+    name: guacamole_psql_init_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/guacamole/psql/init
+      o: bind
+  guacamole_psql_data_volume:
+    name: guacamole_psql_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/guacamole/psql/data
       o: bind

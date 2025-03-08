@@ -1,0 +1,90 @@
+services:
+
+  broker:
+    image: redis
+    container_name: paperless-ngx_redis
+    volumes:
+      - paperless-ngx_redis_volume:/data
+    restart: unless-stopped
+
+  db:
+    image: postgres
+    container_name: paperless-ngx_db
+    volumes:
+      - paperless-ngx_db_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: paperless
+      POSTGRES_USER: paperless
+      POSTGRES_PASSWORD: paperless
+    restart: unless-stopped
+
+  paperless-ngx:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: paperless-ngx
+    depends_on:
+      - db
+      - broker
+    ports:
+      - 8777:8000
+    volumes:
+      - paperless-ngx_data_volume:/usr/src/paperless/data
+      - paperless-ngx_media_volume:/usr/src/paperless/media
+      - paperless-ngx_export_volume:/usr/src/paperless/export
+      - paperless-ngx_consume_volume:/usr/src/paperless/consume
+    environment:
+      LANG: en_AU.UTF-8
+      PAPERLESS_REDIS: redis://broker:6379
+      PAPERLESS_DBHOST: db
+      USERMAP_UID: 1026
+      USERMAP_GID: 100
+      PAPERLESS_TIME_ZONE: Australia/Sydney
+      PAPERLESS_ADMIN_USER: ${USERNAME}
+      PAPERLESS_ADMIN_PASSWORD: ${PASSWORD}
+      PAPERLESS_OCR_LANGUAGE: eng
+      PAPERLESS_SECRET_KEY: 93bb5faddfea3255f15b147ecb4502143575595ef3c480f601600d728c7b7332
+      PAPERLESS_URL: https://paperless-ngx.lejohndary.com
+    restart: unless-stopped
+
+volumes:
+  paperless-ngx_redis_volume:
+    name: paperless-ngx_redis_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/paperless-ngx/redis
+      o: bind
+  paperless-ngx_db_volume:
+    name: paperless-ngx_db_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/paperless-ngx/db
+      o: bind
+  paperless-ngx_data_volume:
+    name: paperless-ngx_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/paperless-ngx/data
+      o: bind
+  paperless-ngx_media_volume:
+      name: paperless-ngx_media_volume
+      driver: local
+      driver_opts:
+        type: none
+        device: /mnt/synonas1/docker-volumes/paperless-ngx/media
+        o: bind
+  paperless-ngx_export_volume:
+      name: paperless-ngx_export_volume
+      driver: local
+      driver_opts:
+        type: none
+        device: /mnt/synonas1/docker-volumes/paperless-ngx/export
+        o: bind
+  paperless-ngx_consume_volume:
+      name: paperless-ngx_consume_volume
+      driver: local
+      driver_opts:
+        type: none
+        device: /mnt/synonas1/docker-volumes/paperless-ngx/consume
+        o: bind

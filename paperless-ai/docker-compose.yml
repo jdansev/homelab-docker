@@ -1,0 +1,25 @@
+services:
+
+  paperless-ai:
+    image: clusterzx/paperless-ai:latest
+    container_name: paperless-ai
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges=true
+    environment:
+      - PAPERLESS_AI_PORT=3000
+    ports:
+      - 3621:3000
+    volumes:
+      - paperless-ai_data_volume:/app/data
+    restart: unless-stopped
+
+volumes:
+  paperless-ai_data_volume:
+    name: paperless-ai_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/paperless-ai/data
+      o: bind

@@ -17,6 +17,12 @@
           cache: 1m
           title: Services
           sites:
+            - title: Paperless-ai
+              url: https://paperless-ai.lejohndary.com
+              icon: /assets/logos/paperless-ai-logo.jpg
+            - title: Paperless-ngx
+              url: https://paperless-ngx.lejohndary.com
+              icon: /assets/logos/paperless-ngx-logo.png
             - title: qBittorrent
               url: https://qbittorrent.lejohndary.com
               icon: /assets/logos/qbittorrent-logo.png

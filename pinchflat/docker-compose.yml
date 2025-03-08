@@ -1,0 +1,28 @@
+services:
+
+  pinchflat:
+    image: ghcr.io/kieraneglin/pinchflat:latest
+    container_name: pinchflat
+    environment:
+      - TZ=Australia/Sydney
+    ports:
+      - 8945:8945
+    volumes:
+      - pinchflat_config_volume:/config
+      - pinchflat_downloads_volume:/downloads
+
+volumes:
+  pinchflat_config_volume:
+    name: pinchflat_config_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/pinchflat/config
+      o: bind
+  pinchflat_downloads_volume:
+    name: pinchflat_downloads_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/pinchflat/downloads
+      o: bind

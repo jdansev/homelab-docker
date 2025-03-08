@@ -1,0 +1,91 @@
+- name: Home
+  title: Home
+  slug: home
+  width: slim
+  center-vertically: true
+  show-mobile-header: true
+  columns:
+    - size: full
+      widgets:
+        - type: search
+          search-engine: google
+          bangs:
+            - title: YouTube
+              shortcut: "!yt"
+              url: https://www.youtube.com/results?search_query={QUERY}
+        - type: monitor
+          cache: 1m
+          title: Services
+          sites:
+            - title: qBittorrent
+              url: https://qbittorrent.lejohndary.com
+              icon: /assets/logos/qbittorrent-logo.png
+            - title: FileFlows
+              url: https://fileflows.lejohndary.com
+              icon: /assets/logos/fileflows-logo.svg
+            - title: Portainer
+              url: https://portainer.lejohndary.com
+              icon: /assets/logos/portainer-logo.svg
+            - title: Prowlarr
+              url: https://prowlarr.lejohndary.com
+              check-url: https://prowlarr.lejohndary.com/ping
+              icon: /assets/logos/prowlarr-logo.png
+            - title: Microbin
+              url: https://microbin.lejohndary.com
+              icon: /assets/logos/microbin-logo.png
+            - title: Seafile
+              url: https://seafile.lejohndary.com
+              check-url: https://seafile.lejohndary.com/api2/ping/
+              icon: /assets/logos/seafile-logo.png
+            - title: Guacamole
+              url: https://guacamole.lejohndary.com/guacamole
+              icon: /assets/logos/guacamole-logo.png
+            - title: Immich
+              url: https://immich.lejohndary.com
+              icon: /assets/logos/immich-logo.png
+            - title: Filestash
+              url: https://filestash.lejohndary.com
+              icon: /assets/logos/filestash-logo.png
+            - title: Synology NAS
+              url: https://synology.lejohndary.com
+              icon: /assets/logos/synology-logo.png
+            - title: Gitea
+              url: https://gitea.lejohndary.com
+              icon: /assets/logos/gitea-logo.png
+            - title: Frigate
+              url: https://frigate.lejohndary.com
+              check-url: https://frigate.lejohndary.com/api/version
+              icon: /assets/logos/frigate-logo.png
+            - title: Vaultwarden
+              url: https://vaultwarden.lejohndary.com
+              check-url: https://vaultwarden.lejohndary.com/alive
+              icon: /assets/logos/vaultwarden-logo.png
+            - title: Jackett
+              url: https://jackett.lejohndary.com
+              check-url: https://jackett.lejohndary.com/health
+              icon: /assets/logos/jackett-logo.png
+            - title: Photoprism
+              url: https://photoprism.lejohndary.com
+              check-url: https://photoprism.lejohndary.com/api/v1/status
+              icon: /assets/logos/photoprism-logo.svg
+            - title: Cal.com
+              url: https://calcom.lejohndary.com
+              icon: /assets/logos/calcom-logo.png
+            - title: Blinko
+              url: https://blinko.lejohndary.com
+              icon: /assets/logos/blinko-logo.png
+            - title: Mealie
+              url: https://mealie.lejohndary.com
+              icon: /assets/logos/mealie-logo.png
+            - title: Pinchflat
+              url: https://pinchflat.lejohndary.com
+              icon: /assets/logos/pinchflat-logo.png
+        - type: rss
+          title: News
+          style: detailed-list
+          preserve-order: true
+          limit: 20
+          collapse-after: 5
+          feeds:
+            - url: https://www.smh.com.au/rss/feed.xml
+              title: Sydney Morning Herald

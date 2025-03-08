@@ -1,0 +1,55 @@
+services:
+
+  fileflows:
+    image: revenz/fileflows:latest
+    container_name: fileflows
+    ports:
+      - 19200:5000
+    environment:
+      - TempPathHost=/tmp
+      - TZ=Australia/Sydney
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - fileflows_temp_volume:/temp
+      - fileflows_data_volume:/app/Data
+      - fileflows_logs_volume:/app/Logs
+      - fileflows_common_volume:/app/common
+      - qbittorrent_downloads_volume:/qbittorrent-downloads
+    restart: unless-stopped
+
+volumes:
+  fileflows_temp_volume:
+    name: fileflows_temp_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/fileflows/temp
+      o: bind
+  fileflows_data_volume:
+    name: fileflows_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/fileflows/data
+      o: bind
+  fileflows_logs_volume:
+    name: fileflows_logs_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/fileflows/logs
+      o: bind
+  fileflows_common_volume:
+    name: fileflows_common_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/fileflows/common
+      o: bind
+  qbittorrent_downloads_volume:
+    name: qbittorrent_downloads_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/qbittorrent/downloads
+      o: bind

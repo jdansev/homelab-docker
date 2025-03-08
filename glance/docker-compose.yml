@@ -4,7 +4,7 @@ services:
     container_name: glance
     image: glanceapp/glance
     volumes:
-      - glance_config_volume:/app/config
+      - ./config:/app/config
       - glance_assets_volume:/app/assets
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
@@ -12,13 +12,6 @@ services:
     env_file: .env
 
 volumes:
-  glance_config_volume:
-    name: glance_config_volume
-    driver: local
-    driver_opts:
-      type: none
-      device: /mnt/synonas1/docker-volumes/glance/config
-      o: bind
   glance_assets_volume:
       name: glance_assets_volume
       driver: local

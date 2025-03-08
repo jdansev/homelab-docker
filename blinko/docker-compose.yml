@@ -1,0 +1,66 @@
+
+services:
+
+  blinko:
+    image: blinkospace/blinko:latest
+    container_name: blinko
+    environment:
+      NODE_ENV: production
+      NEXTAUTH_URL: https://blinko.lejohndary.com
+      NEXT_PUBLIC_BASE_URL: https://blinko.lejohndary.com
+      NEXTAUTH_SECRET: 161c85f9e281ebc567ac70856c8bb59656be7e9514a83806e4d60070f714c452
+      DATABASE_URL: postgresql://postgres:mysecretpassword@postgres:5432/postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - blinko_app_volume:/app
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+      - 1111:1111
+    healthcheck:
+      test: ["CMD", "curl", "-f", "https://blinko.lejohndary.com"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14
+    container_name: blinko-postgres
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      TZ: Asia/Shanghai
+    volumes:
+      - blinko_db_volume:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        ["CMD", "pg_isready", "-U", "postgres", "-d", "postgres"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  blinko_app_volume:
+    name: blinko_app_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/blinko/app
+      o: bind
+  blinko_db_volume:
+    name: blinko_db_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/blinko/db
+      o: bind

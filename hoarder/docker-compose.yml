@@ -1,0 +1,54 @@
+services:
+
+  hoarder:
+    image: ghcr.io/hoarder-app/hoarder:0.22.0
+    container_name: hoarder
+    volumes:
+      - hoarder_data_volume:/data
+    ports:
+      - 3267:3000
+    environment:
+      MEILI_ADDR: http://meilisearch:7700
+      BROWSER_WEB_URL: http://chrome:9222
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      DATA_DIR: /data
+
+  chrome:
+    image: gcr.io/zenika-hub/alpine-chrome:123
+    container_name: hoarder_chrome
+    command:
+      - --no-sandbox
+      - --disable-gpu
+      - --disable-dev-shm-usage
+      - --remote-debugging-address=0.0.0.0
+      - --remote-debugging-port=9222
+      - --hide-scrollbars
+    restart: unless-stopped
+
+  meilisearch:
+    image: getmeili/meilisearch:v1.11.1
+    container_name: hoarder_meilisearch
+    environment:
+      MEILI_NO_ANALYTICS: "true"
+    ports:
+      - 7700:7700
+    volumes:
+      - meilisearch_data_volume:/meili_data
+    restart: unless-stopped
+
+volumes:
+  hoarder_data_volume:
+    name: hoarder_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/hoarder/data
+      o: bind
+  meilisearch_data_volume:
+    name: meilisearch_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/hoarder/meilisearch/data
+      o: bind

@@ -1,0 +1,21 @@
+services:
+
+  node-red:
+    image: nodered/node-red:latest
+    container_name: node-red
+    environment:
+      - TZ=Australia/Sydney
+    ports:
+      - 1880:1880
+    volumes:
+      - node-red_data_volume:/data
+    restart: unless-stopped
+
+volumes:
+  node-red_data_volume:
+      name: node-red_data_volume
+      driver: local
+      driver_opts:
+        type: none
+        device: /mnt/synonas1/docker-volumes/node-red/data
+        o: bind

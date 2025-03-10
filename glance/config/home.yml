@@ -17,6 +17,9 @@
           cache: 1m
           title: Services
           sites:
+            - title: Home Assistant
+              url: https://homeassistant.lejohndary.com
+              icon: /assets/logos/homeassistant-logo.svg
             - title: Paperless-ai
               url: https://paperless-ai.lejohndary.com
               icon: /assets/logos/paperless-ai-logo.jpg
@@ -49,9 +52,6 @@
             - title: Immich
               url: https://immich.lejohndary.com
               icon: /assets/logos/immich-logo.png
-            - title: Filestash
-              url: https://filestash.lejohndary.com
-              icon: /assets/logos/filestash-logo.png
             - title: Synology NAS
               url: https://synology.lejohndary.com
               icon: /assets/logos/synology-logo.png

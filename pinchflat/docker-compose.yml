@@ -10,6 +10,7 @@ services:
     volumes:
       - pinchflat_config_volume:/config
       - pinchflat_downloads_volume:/downloads
+    restart: unless-stopped
 
 volumes:
   pinchflat_config_volume:

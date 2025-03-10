@@ -3,15 +3,14 @@ services:
   guacd:
     image: guacamole/guacd:latest
     container_name: guacamole_guacd
-    restart: always
     volumes:
       - guacamole_drive_volume:/drive:rw
       - guacamole_record_volume:/record:rw
+    restart: unless-stopped
 
   postgres:
     image: postgres:15.2-alpine
     container_name: guacamole-db
-    restart: always
     environment:
       - PGDATA=/var/lib/postgresql/data/guacamole
       - POSTGRES_DB=guacamole_db
@@ -20,11 +19,11 @@ services:
     volumes:
       - guacamole_psql_init_volume:/docker-entrypoint-initdb.d:z
       - guacamole_psql_data_volume:/var/lib/postgresql/data:Z
+    restart: unless-stopped
 
   guacamole:
     image: guacamole/guacamole:latest
     container_name: guacamole
-    restart: always
     depends_on:
       - guacd
       - postgres
@@ -40,6 +39,7 @@ services:
       - 8082:8080/tcp
     expose:
       - 8082
+    restart: unless-stopped
 
 volumes:
   guacamole_drive_volume:

@@ -1,0 +1,23 @@
+services:
+
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    volumes:
+      - homeassistant_config_volume:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    ports:
+      - 8123:8123
+    privileged: true
+    network_mode: host
+    restart: unless-stopped
+
+volumes:
+  homeassistant_config_volume:
+    name: homeassistant_config_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/homeassistant/config
+      o: bind

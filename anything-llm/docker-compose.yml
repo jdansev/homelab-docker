@@ -11,14 +11,14 @@ services:
       - STORAGE_DIR=/app/server/storage
       - JWT_SECRET=9b02eee34396f96cf7aa80cd9999d32a0adbe696019bf6e6258b3943a8f0430d
       - LLM_PROVIDER=openai
-      - OPEN_AI_KEY=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
+      - OPEN_AI_KEY=${OPEN_AI_KEY}
       - OPEN_MODEL_PREF=gpt-4o
       - EMBEDDING_ENGINE=openai
       - EMBEDDING_MODEL_PREF=text-embedding-ada-002
       - VECTOR_DB=lancedb
       - WHISPER_PROVIDER=local
       - TTS_PROVIDER=openai
-      - TTS_OPEN_AI_KEY=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
+      - TTS_OPEN_AI_KEY=${OPEN_AI_KEY}
       - TTS_OPEN_AI_VOICE_MODEL=nova
       - PASSWORDMINCHAR=8
     volumes:

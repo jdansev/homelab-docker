@@ -13,6 +13,7 @@ services:
       - MINIO_ROOT_USER=${USERNAME}
       - MINIO_ROOT_PASSWORD=${PASSWORD}
       - MINIO_DEFAULT_BUCKETS=${DEFAULT_BUCKETS}
+    restart: unless-stopped
 
 volumes:
   minio_data_volume:

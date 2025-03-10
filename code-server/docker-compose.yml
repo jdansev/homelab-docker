@@ -1,0 +1,33 @@
+services:
+
+  code-server:
+    image: code-server
+    # image: codercom/code-server:4.16.1-ubuntu
+    build: .
+    container_name: code-server
+    environment:
+      - PASSWORD=${PASSWORD}
+      - TZ=Australia/Sydney
+    volumes:
+      - code-server_config_volume:/config
+      - code-server_workspace_volume:/home/coder/workspace
+      - ~/.ssh:/home/coder/.ssh:ro
+    ports:
+      - 8113:8080
+    restart: unless-stopped
+
+volumes:
+  code-server_config_volume:
+    name: code-server_config_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/code-server/config
+      o: bind
+  code-server_workspace_volume:
+    name: code-server_workspace_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/code-server/workspace
+      o: bind

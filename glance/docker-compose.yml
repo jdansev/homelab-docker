@@ -10,6 +10,7 @@ services:
     ports:
       - 8966:8080
     env_file: .env
+    restart: unless-stopped
 
 volumes:
   glance_assets_volume:

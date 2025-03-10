@@ -17,6 +17,9 @@
           cache: 1m
           title: Services
           sites:
+            - title: AnythingLLM
+              url: https://anythingllm.lejohndary.com
+              icon: /assets/logos/anythingllm-logo.png
             - title: Home Assistant
               url: https://homeassistant.lejohndary.com
               icon: /assets/logos/homeassistant-logo.svg
@@ -26,6 +29,9 @@
             - title: Paperless-ngx
               url: https://paperless-ngx.lejohndary.com
               icon: /assets/logos/paperless-ngx-logo.png
+            - title: Code Server
+              url: https://code.lejohndary.com
+              icon: /assets/logos/code-server-logo.png
             - title: qBittorrent
               url: https://qbittorrent.lejohndary.com
               icon: /assets/logos/qbittorrent-logo.png
@@ -74,9 +80,6 @@
               url: https://photoprism.lejohndary.com
               check-url: https://photoprism.lejohndary.com/api/v1/status
               icon: /assets/logos/photoprism-logo.svg
-            - title: Cal.com
-              url: https://calcom.lejohndary.com
-              icon: /assets/logos/calcom-logo.png
             - title: Blinko
               url: https://blinko.lejohndary.com
               icon: /assets/logos/blinko-logo.png

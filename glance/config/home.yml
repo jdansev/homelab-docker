@@ -17,77 +17,101 @@
           cache: 1m
           title: Services
           sites:
+            - title: pgAdmin
+              url: https://pgadmin.lejohndary.com
+              check-url: http://192.168.50.245:8461
+              icon: /assets/logos/pgadmin-logo.png
             - title: AnythingLLM
               url: https://anythingllm.lejohndary.com
+              check-url: http://192.168.50.245:3090
               icon: /assets/logos/anythingllm-logo.png
+            - title: Node-RED
+              url: https://node-red.lejohndary.com
+              check-url: http://192.168.50.245:1880
+              icon: /assets/logos/node-red-logo.png
             - title: Home Assistant
               url: https://homeassistant.lejohndary.com
+              check-url: http://192.168.50.245:8123
               icon: /assets/logos/homeassistant-logo.svg
             - title: Paperless-ai
               url: https://paperless-ai.lejohndary.com
+              check-url: http://192.168.50.245:3621
               icon: /assets/logos/paperless-ai-logo.jpg
             - title: Paperless-ngx
               url: https://paperless-ngx.lejohndary.com
+              check-url: http://192.168.50.245:8777
               icon: /assets/logos/paperless-ngx-logo.png
             - title: Code Server
               url: https://code.lejohndary.com
+              check-url: http://192.168.50.245:8113
               icon: /assets/logos/code-server-logo.png
             - title: qBittorrent
               url: https://qbittorrent.lejohndary.com
+              check-url: http://192.168.50.245:8080
               icon: /assets/logos/qbittorrent-logo.png
             - title: FileFlows
               url: https://fileflows.lejohndary.com
+              check-url: http://192.168.50.245:19200
               icon: /assets/logos/fileflows-logo.svg
             - title: Portainer
               url: https://portainer.lejohndary.com
+              check-url: https://192.168.50.245:9444
               icon: /assets/logos/portainer-logo.svg
             - title: Prowlarr
               url: https://prowlarr.lejohndary.com
-              check-url: https://prowlarr.lejohndary.com/ping
+              check-url: http://192.168.50.245:9696/ping
               icon: /assets/logos/prowlarr-logo.png
             - title: Microbin
               url: https://microbin.lejohndary.com
+              check-url: http://192.168.50.245:8888
               icon: /assets/logos/microbin-logo.png
             - title: Seafile
               url: https://seafile.lejohndary.com
-              check-url: https://seafile.lejohndary.com/api2/ping/
+              check-url: http://192.168.50.245:8181/api2/ping/
               icon: /assets/logos/seafile-logo.png
             - title: Guacamole
               url: https://guacamole.lejohndary.com/guacamole
+              check-url: http://192.168.50.245:8082/guacamole
               icon: /assets/logos/guacamole-logo.png
             - title: Immich
               url: https://immich.lejohndary.com
+              check-url: http://192.168.50.245:2283
               icon: /assets/logos/immich-logo.png
             - title: Synology NAS
               url: https://synology.lejohndary.com
+              check-url: http://192.168.50.245:5000
               icon: /assets/logos/synology-logo.png
             - title: Gitea
               url: https://gitea.lejohndary.com
+              check-url: http://192.168.50.245:3030
               icon: /assets/logos/gitea-logo.png
             - title: Frigate
               url: https://frigate.lejohndary.com
-              check-url: https://frigate.lejohndary.com/api/version
+              check-url: http://192.168.50.245:5000/api/version
               icon: /assets/logos/frigate-logo.png
             - title: Vaultwarden
               url: https://vaultwarden.lejohndary.com
-              check-url: https://vaultwarden.lejohndary.com/alive
+              check-url: http://192.168.50.245:9445/alive
               icon: /assets/logos/vaultwarden-logo.png
             - title: Jackett
               url: https://jackett.lejohndary.com
-              check-url: https://jackett.lejohndary.com/health
+              check-url: http://192.168.50.245:9117/health
               icon: /assets/logos/jackett-logo.png
             - title: Photoprism
               url: https://photoprism.lejohndary.com
-              check-url: https://photoprism.lejohndary.com/api/v1/status
+              check-url: http://192.168.50.245:2342/api/v1/status
               icon: /assets/logos/photoprism-logo.svg
             - title: Blinko
               url: https://blinko.lejohndary.com
+              check-url: http://192.168.50.245:1111
               icon: /assets/logos/blinko-logo.png
             - title: Mealie
               url: https://mealie.lejohndary.com
+              check-url: http://192.168.50.245:9925
               icon: /assets/logos/mealie-logo.png
             - title: Pinchflat
               url: https://pinchflat.lejohndary.com
+              check-url: http://192.168.50.245:8945
               icon: /assets/logos/pinchflat-logo.png
         - type: rss
           title: News

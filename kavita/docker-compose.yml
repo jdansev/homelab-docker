@@ -1,0 +1,37 @@
+services:
+
+  kavita:
+    image: lscr.io/linuxserver/kavita:latest
+    container_name: kavita
+    environment:
+      - TZ=Australia/Sydney
+    volumes:
+      - kavita_config_volume:/config
+      - kavita_data_volume:/data
+      - kavita_books_volume:/books
+    ports:
+      - 5309:5000
+    restart: unless-stopped
+
+volumes:
+  kavita_config_volume:
+    name: kavita_config_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/kavita/config
+      o: bind
+  kavita_data_volume:
+    name: kavita_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/kavita/data
+      o: bind
+  kavita_books_volume:
+    name: kavita_books_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/kavita/books
+      o: bind

@@ -17,6 +17,10 @@
           cache: 1m
           title: Services
           sites:
+            - title: Kavita
+              url: https://kavita.lejohndary.com/library/1
+              check-url: http://192.168.50.245:5309
+              icon: /assets/logos/kavita-logo.png
             - title: Atmoify
               url: https://atmoify.lejohndary.com/home
               check-url: http://192.168.50.245:3467

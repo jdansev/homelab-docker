@@ -1,17 +1,5 @@
 services:
 
-  postgres:
-    image: postgres:latest
-    container_name: pgadmin_db
-    volumes:
-      - pgadmin_db_volume:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    ports:
-      - 5432:5432
-    env_file:
-      - .env
-    restart: unless-stopped
-
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: pgadmin
@@ -24,13 +12,6 @@ services:
     restart: unless-stopped
 
 volumes:
-  pgadmin_db_volume:
-    name: pgadmin_db_volume
-    driver: local
-    driver_opts:
-      type: none
-      device: /mnt/synonas1/docker-volumes/pgadmin/db
-      o: bind
   pgadmin_data_volume:
     name: pgadmin_data_volume
     driver: local

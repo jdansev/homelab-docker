@@ -17,6 +17,18 @@
           cache: 1m
           title: Services
           sites:
+            - title: Docmost
+              url: https://docmost.lejohndary.com/s/general
+              check-url: http://192.168.50.245:3467
+              icon: /assets/logos/docmost-logo.png
+            - title: Beszel
+              url: https://beszel.lejohndary.com
+              check-url: http://192.168.50.245:8090
+              icon: /assets/logos/beszel-logo.png
+            - title: Memos
+              url: https://memos.lejohndary.com
+              check-url: http://192.168.50.245:8200
+              icon: /assets/logos/memos-logo.png
             - title: pgAdmin
               url: https://pgadmin.lejohndary.com
               check-url: http://192.168.50.245:8461
@@ -113,6 +125,10 @@
               url: https://pinchflat.lejohndary.com
               check-url: http://192.168.50.245:8945
               icon: /assets/logos/pinchflat-logo.png
+            - title: Changedetection
+              url: https://changedetection.lejohndary.com
+              check-url: http://192.168.50.245:5516
+              icon: /assets/logos/changedetection-logo.png
         - type: rss
           title: News
           style: detailed-list

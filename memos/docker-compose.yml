@@ -1,0 +1,20 @@
+services:
+
+  memos:
+    image: ghcr.io/usememos/memos:latest
+    container_name: memos
+    ports:
+      - "8200:5230"
+    init: true
+    volumes:
+      - memos_data_volume:/var/opt/memos
+    restart: unless-stopped
+
+volumes:
+  memos_data_volume:
+    name: memos_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/memos/data
+      o: bind

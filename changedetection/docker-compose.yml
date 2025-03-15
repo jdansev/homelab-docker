@@ -1,0 +1,21 @@
+services:
+
+  changedetection:
+    image: lscr.io/linuxserver/changedetection.io:latest
+    container_name: changedetection
+    environment:
+      - TZ=Australia/Sydney
+    volumes:
+      - changedetection_config_volume:/config
+    ports:
+      - 5516:5000
+    restart: unless-stopped
+
+volumes:
+  changedetection_config_volume:
+    name: changedetection_config_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/changedetection/config
+      o: bind

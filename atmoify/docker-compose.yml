@@ -1,0 +1,9 @@
+services:
+  atmoify:
+    image: ghcr.io/bluegoosemedia/atmoify:latest
+    container_name: atmoify
+    ports:
+      - 3880:3000
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped

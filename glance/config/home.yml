@@ -17,8 +17,12 @@
           cache: 1m
           title: Services
           sites:
+            - title: Atmoify
+              url: https://atmoify.lejohndary.com/home
+              check-url: http://192.168.50.245:3467
+              icon: /assets/logos/atmoify-logo.png
             - title: Docmost
-              url: https://docmost.lejohndary.com/s/general
+              url: https://docmost.lejohndary.com/home
               check-url: http://192.168.50.245:3467
               icon: /assets/logos/docmost-logo.png
             - title: Beszel

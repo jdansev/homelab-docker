@@ -1,0 +1,53 @@
+services:
+
+  booklore:
+    image: ghcr.io/adityachandelgit/booklore-app:latest
+    container_name: booklore
+    env_file:
+      - .env
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    ports:
+      - 6060:6060
+    volumes:
+      - booklore_data_volume:/app/data
+      - booklore_books_volume:/books
+    restart: unless-stopped
+
+  mariadb:
+    image: lscr.io/linuxserver/mariadb:11.4.5
+    container_name: booklore_db
+    env_file:
+      - .env
+    volumes:
+      - booklore_db_volume:/config
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  booklore_data_volume:
+    name: booklore_data_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/booklore/data
+      o: bind
+  booklore_books_volume:
+    name: booklore_books_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/booklore/books
+      o: bind
+  booklore_db_volume:
+    name: booklore_db_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/booklore/db
+      o: bind

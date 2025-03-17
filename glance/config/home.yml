@@ -22,7 +22,7 @@
               check-url: http://192.168.50.245:5309
               icon: /assets/logos/kavita-logo.png
             - title: Atmoify
-              url: https://atmoify.lejohndary.com/home
+              url: https://atmoify.lejohndary.com
               check-url: http://192.168.50.245:3467
               icon: /assets/logos/atmoify-logo.png
             - title: Docmost
@@ -102,7 +102,7 @@
               check-url: http://192.168.50.245:5000
               icon: /assets/logos/synology-logo.png
             - title: Gitea
-              url: https://gitea.lejohndary.com
+              url: https://gitea.lejohndary.com/explore/repos
               check-url: http://192.168.50.245:3030
               icon: /assets/logos/gitea-logo.png
             - title: Frigate

@@ -1,7 +1,0 @@
-services:
-
-  whoami:
-    container_name: whoami
-    image: traefik/whoami
-    ports:
-      - "32769:80"

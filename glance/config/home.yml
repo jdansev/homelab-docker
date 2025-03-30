@@ -11,6 +11,18 @@
           cache: 1m
           title: Services
           sites:
+            - title: Pangolin
+              url: https://pangolin.lejohndary.com
+              check-url: https://pangolin.lejohndary.com
+              icon: /assets/logos/pangolin-logo.png
+            - title: Plex
+              url: https://plex.lejohndary.com
+              check-url: http://192.168.50.249:32400/web
+              icon: /assets/logos/plex-logo.png?0
+            - title: Jellyfin
+              url: https://jellyfin.lejohndary.com
+              check-url: http://192.168.50.245:8012
+              icon: /assets/logos/jellyfin-logo.png
             - title: Kavita
               url: https://kavita.lejohndary.com/library/1
               check-url: http://192.168.50.245:5309
@@ -127,12 +139,3 @@
               url: https://changedetection.lejohndary.com
               check-url: http://192.168.50.245:5516
               icon: /assets/logos/changedetection-logo.png
-        - type: rss
-          title: News
-          style: detailed-list
-          preserve-order: true
-          limit: 20
-          collapse-after: 5
-          feeds:
-            - url: https://www.smh.com.au/rss/feed.xml
-              title: Sydney Morning Herald

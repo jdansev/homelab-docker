@@ -33,6 +33,8 @@ services:
       - paperless-ngx_consume_volume:/usr/src/paperless/consume
     environment:
       LANG: en_AU.UTF-8
+      PAPERLESS_CONSUMPTION_DIR: /usr/src/paperless/consume
+      PAPERLESS_CONSUMER_POLLING: 10
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
       USERMAP_UID: 1026
@@ -51,40 +53,40 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/paperless-ngx/redis
+      device: /mnt/synonas1/docker-volumes-docs/paperless-ngx/redis
       o: bind
   paperless-ngx_db_volume:
     name: paperless-ngx_db_volume
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/paperless-ngx/db
+      device: /mnt/synonas1/docker-volumes-docs/paperless-ngx/db
       o: bind
   paperless-ngx_data_volume:
     name: paperless-ngx_data_volume
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/paperless-ngx/data
+      device: /mnt/synonas1/docker-volumes-docs/paperless-ngx/data
       o: bind
   paperless-ngx_media_volume:
       name: paperless-ngx_media_volume
       driver: local
       driver_opts:
         type: none
-        device: /mnt/synonas1/docker-volumes/paperless-ngx/media
+        device: /mnt/synonas1/docker-volumes-docs/paperless-ngx/media
         o: bind
   paperless-ngx_export_volume:
       name: paperless-ngx_export_volume
       driver: local
       driver_opts:
         type: none
-        device: /mnt/synonas1/docker-volumes/paperless-ngx/export
+        device: /mnt/synonas1/docker-volumes-docs/paperless-ngx/export
         o: bind
   paperless-ngx_consume_volume:
       name: paperless-ngx_consume_volume
       driver: local
       driver_opts:
         type: none
-        device: /mnt/synonas1/docker-volumes/paperless-ngx/consume
+        device: /mnt/synonas1/docker-volumes-docs/paperless-ngx/consume
         o: bind

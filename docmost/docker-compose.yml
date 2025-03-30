@@ -40,19 +40,19 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/docmost/data
+      device: /mnt/synonas1/docker-volumes-docs/docmost/data
       o: bind
   docmost_db_volume:
     name: docmost_db_volume
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/docmost/db
+      device: /mnt/synonas1/docker-volumes-docs/docmost/db
       o: bind
   docmost_redis_volume:
     name: docmost_redis_volume
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/docmost/redis
+      device: /mnt/synonas1/docker-volumes-docs/docmost/redis
       o: bind

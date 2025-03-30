@@ -14,7 +14,13 @@ services:
       - fileflows_data_volume:/app/Data
       - fileflows_logs_volume:/app/Logs
       - fileflows_common_volume:/app/common
-      - qbittorrent_downloads_volume:/qbittorrent-downloads
+
+      - fileflows_fujifilm_x100vi_consume_volume:/fujifilm-x100vi-consume
+      - fileflows_fujifilm_x100vi_processed_volume:/fujifilm-x100vi-processed
+
+      - fileflows_media_consume_volume:/media-consume
+      - fileflows_media_processed_volume:/media-processed
+
     restart: unless-stopped
 
 volumes:
@@ -46,10 +52,33 @@ volumes:
       type: none
       device: /mnt/synonas1/docker-volumes/fileflows/common
       o: bind
-  qbittorrent_downloads_volume:
-    name: qbittorrent_downloads_volume
+
+  fileflows_fujifilm_x100vi_consume_volume:
+    name: fileflows_fujifilm_x100vi_consume_volume
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/qbittorrent/downloads
+      device: /mnt/synonas1/docker-volumes/fileflows/fujifilm-x100vi-consume
+      o: bind
+  fileflows_fujifilm_x100vi_processed_volume:
+    name: fileflows_fujifilm_x100vi_processed_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/fileflows/fujifilm-x100vi-processed
+      o: bind
+
+  fileflows_media_consume_volume:
+    name: fileflows_media_consume_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/fileflows/media-consume
+      o: bind
+  fileflows_media_processed_volume:
+    name: fileflows_media_processed_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/synonas1/docker-volumes/fileflows/media-processed
       o: bind

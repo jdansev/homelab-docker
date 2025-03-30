@@ -1,0 +1,10 @@
+services:
+
+  newt:
+    image: fosrl/newt
+    container_name: newt
+    environment:
+      - PANGOLIN_ENDPOINT=https://pangolin.lejohndary.com
+      - NEWT_ID=hbjpjgxvs79gb8a
+      - NEWT_SECRET=eo59858xob4fgk6cwr4qsmeisfq8a9totkbwiluwt649y6u8
+    restart: unless-stopped

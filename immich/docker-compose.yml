@@ -1,15 +1,15 @@
 services:
 
-  immich-server:
-    container_name: immich_server
+  immich:
     image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
+    container_name: immich
     volumes:
       - immich_server_volume:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
     ports:
-      - '2283:2283'
+      - 2283:2283
     depends_on:
       - redis
       - database
@@ -71,19 +71,19 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/immich/server
+      device: /mnt/synonas1/docker-volumes-media/immich/server
       o: bind
   immich_db_volume:
     name: immich_db_volume
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/immich/db
+      device: /mnt/synonas1/docker-volumes-media/immich/db
       o: bind
   immich_cache_volume:
     name: immich_cache_volume
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/immich/cache
+      device: /mnt/synonas1/docker-volumes-media/immich/cache
       o: bind

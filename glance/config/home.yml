@@ -7,12 +7,6 @@
   columns:
     - size: full
       widgets:
-        - type: search
-          search-engine: google
-          bangs:
-            - title: YouTube
-              shortcut: "!yt"
-              url: https://www.youtube.com/results?search_query={QUERY}
         - type: monitor
           cache: 1m
           title: Services
@@ -121,10 +115,6 @@
               url: https://photoprism.lejohndary.com
               check-url: http://192.168.50.245:2342/api/v1/status
               icon: /assets/logos/photoprism-logo.svg
-            - title: Blinko
-              url: https://blinko.lejohndary.com
-              check-url: http://192.168.50.245:1111
-              icon: /assets/logos/blinko-logo.png
             - title: Mealie
               url: https://mealie.lejohndary.com
               check-url: http://192.168.50.245:9925

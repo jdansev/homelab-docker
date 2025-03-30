@@ -27,19 +27,19 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/photoprism/import
+      device: /mnt/synonas1/docker-volumes-media/photoprism/import
       o: bind
   photoprism_originals_volume:
     name: photoprism_originals_volume
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/photoprism/originals
+      device: /mnt/synonas1/docker-volumes-media/photoprism/originals
       o: bind
   photoprism_storage_volume:
     name: photoprism_storage_volume
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/photoprism/storage
+      device: /mnt/synonas1/docker-volumes-media/photoprism/storage
       o: bind

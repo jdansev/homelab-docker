@@ -29,5 +29,5 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /mnt/synonas1/docker-volumes/code-server/workspace
+      device: /home/jdansev/
       o: bind

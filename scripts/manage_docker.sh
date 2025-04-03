@@ -25,7 +25,7 @@ case "$ACTION" in
     for dir in "$BASE_DIR"/*/; do
       if [ -f "$dir/docker-compose.yml" ]; then
         echo "⏹️ Stopping service in: $dir"
-        (cd "$dir" && docker compose --env-file ./../.env down)
+        (cd "$dir" && docker compose down)
       fi
     done
     echo "✅ All services stopped. Now starting them again..."
@@ -41,7 +41,7 @@ esac
 for dir in "$BASE_DIR"/*/; do
   if [ -f "$dir/docker-compose.yml" ]; then
     echo "▶️ Processing service in: $dir"
-    (cd "$dir" && docker compose --env-file ./../.env $COMMAND)
+    (cd "$dir" && docker compose $COMMAND)
 
     # Check if the command executed successfully
     if [ $? -eq 0 ]; then

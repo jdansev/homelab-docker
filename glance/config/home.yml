@@ -100,7 +100,7 @@
               check-url: http://192.168.50.245:8082/guacamole
               icon: /assets/logos/guacamole-logo.png
             - title: Immich
-              url: https://immich.lejohndary.com
+              url: https://immich.lejohndary.com/albums
               check-url: http://192.168.50.245:2283
               icon: /assets/logos/immich-logo.png
             - title: Synology NAS

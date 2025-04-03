@@ -10,10 +10,10 @@ services:
       - SSH_MODE=-R
       - SSH_BIND_IP=0.0.0.0
       - SSH_TARGET_PORT=22
-      - SSH_KEY_FILE=/id_rsa
+      - SSH_KEY_FILE=/autossh_id_rsa
     restart: unless-stopped
     volumes:
-      - /home/jdansev/.ssh/id_rsa:/id_rsa
+      - /home/jdansev/.ssh/autossh_id_rsa:/autossh_id_rsa
     dns:
       - 8.8.8.8
       - 1.1.1.1

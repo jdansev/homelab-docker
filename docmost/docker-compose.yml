@@ -19,6 +19,7 @@ services:
 
   db:
     image: postgres:16-alpine
+    container_name: docmost_db
     environment:
       POSTGRES_DB: docmost
       POSTGRES_USER: docmost

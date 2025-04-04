@@ -4,6 +4,4 @@
 ssh-keygen -t rsa -b 4096
 # view ssh public key
 cat ~/.ssh/id_rsa.pub
-# e.g. push locally
-git remote set-url origin ssh://git@192.168.50.245:2222/jdansev/Up-Bank-Cache.git
 ```
